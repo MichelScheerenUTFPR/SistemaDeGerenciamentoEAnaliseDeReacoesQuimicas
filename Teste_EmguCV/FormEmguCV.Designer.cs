@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pbCapturaWebCam = new System.Windows.Forms.PictureBox();
@@ -55,7 +54,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnRetanguloManual = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.graficoAnalise = new ZedGraph.ZedGraphControl();
             this.graficoResultados = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.pbCapturaWebCam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTempo)).BeginInit();
@@ -274,21 +272,6 @@
             this.label10.TabIndex = 23;
             this.label10.Text = "Coordenadas da Área Selecionada:";
             // 
-            // graficoAnalise
-            // 
-            this.graficoAnalise.Location = new System.Drawing.Point(616, 12);
-            this.graficoAnalise.Name = "graficoAnalise";
-            this.graficoAnalise.ScrollGrace = 0D;
-            this.graficoAnalise.ScrollMaxX = 0D;
-            this.graficoAnalise.ScrollMaxY = 0D;
-            this.graficoAnalise.ScrollMaxY2 = 0D;
-            this.graficoAnalise.ScrollMinX = 0D;
-            this.graficoAnalise.ScrollMinY = 0D;
-            this.graficoAnalise.ScrollMinY2 = 0D;
-            this.graficoAnalise.Size = new System.Drawing.Size(476, 362);
-            this.graficoAnalise.TabIndex = 24;
-            this.graficoAnalise.UseExtendedPrintDialog = true;
-            // 
             // graficoResultados
             // 
             chartArea1.AxisX.Crossing = 0D;
@@ -304,7 +287,7 @@
             chartArea1.AxisY.TitleFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea1.Name = "ChartArea1";
             this.graficoResultados.ChartAreas.Add(chartArea1);
-            this.graficoResultados.Location = new System.Drawing.Point(602, 402);
+            this.graficoResultados.Location = new System.Drawing.Point(595, 12);
             this.graficoResultados.Name = "graficoResultados";
             series1.BorderWidth = 3;
             series1.ChartArea = "ChartArea1";
@@ -316,7 +299,7 @@
             series1.Name = "Series1";
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             this.graficoResultados.Series.Add(series1);
-            this.graficoResultados.Size = new System.Drawing.Size(557, 300);
+            this.graficoResultados.Size = new System.Drawing.Size(602, 415);
             this.graficoResultados.TabIndex = 25;
             this.graficoResultados.Text = "chart1";
             // 
@@ -326,7 +309,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1226, 749);
             this.Controls.Add(this.graficoResultados);
-            this.Controls.Add(this.graficoAnalise);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnRetanguloManual);
             this.Controls.Add(this.label9);
@@ -391,7 +373,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnRetanguloManual;
         private System.Windows.Forms.Label label10;
-        private ZedGraph.ZedGraphControl graficoAnalise;
         private System.Windows.Forms.DataVisualization.Charting.Chart graficoResultados;
     }
 }

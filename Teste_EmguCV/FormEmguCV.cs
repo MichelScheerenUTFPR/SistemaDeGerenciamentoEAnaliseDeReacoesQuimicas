@@ -79,7 +79,6 @@ namespace Teste_EmguCV
             txtBlue.Text = Convert.ToString(_analise.Diferenciador.Blue);
             txtGreen.Text = Convert.ToString(_analise.Diferenciador.Green);
             txtRed.Text = Convert.ToString(_analise.Diferenciador.Red);
-            MessageBox.Show("Funciona");
         }
 
         private async void BtnIniciarCapturas_Click(object sender, EventArgs e)
@@ -88,17 +87,6 @@ namespace Teste_EmguCV
             _analise.Sinais.ForEach(x => rtxtSinais.AppendText(x + "\n"));
             AtualizarGrafico();
         }
-
-        //private void AtualizarGrafico()
-        //{
-        //    PointPairList points = new PointPairList();
-        //    for (int i = 0; i < _analise.Sinais.Count; i++)
-        //    {
-        //        points.Add(new PointPair(i + 1, _analise.Sinais[i]));
-        //    }
-        //    graficoAnalise.GraphPane.AddCurve("Sinais/Tempo", points, Color.Red, SymbolType.None);
-        //    graficoAnalise.AxisChange();
-        //}
 
         private void AtualizarGrafico()
         {
