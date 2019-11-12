@@ -79,6 +79,7 @@ namespace Teste_EmguCV
             txtBlue.Text = Convert.ToString(_analise.Diferenciador.Blue);
             txtGreen.Text = Convert.ToString(_analise.Diferenciador.Green);
             txtRed.Text = Convert.ToString(_analise.Diferenciador.Red);
+            MessageBox.Show("Funciona");
         }
 
         private async void BtnIniciarCapturas_Click(object sender, EventArgs e)
