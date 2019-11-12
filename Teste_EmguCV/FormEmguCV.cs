@@ -28,8 +28,6 @@ namespace Teste_EmguCV
             _webCam.WebCamThread.Start();
             _retangulo = new DesenharRetangulo();
             _analise = new Analise();
-            nudCapturas.Value = 1;
-            nudTempo.Value = 10;
         }
 
         //Garantir que a Thread da WebCam seja fechada
@@ -69,20 +67,37 @@ namespace Teste_EmguCV
             }        
         }
 
-        //Iniciar captra do diferenciador
+        //Iniciar captura do diferenciador
         private void BtnObterDiferenciador_Click(object sender, EventArgs e)
         {
-            _analise.ObterDiferenciador(_webCam.Matriz.ToImage<Bgr, byte>(), _retangulo.Retangulo);
-            txtBlue.Text = Convert.ToString(_analise.Diferenciador.Blue);
-            txtGreen.Text = Convert.ToString(_analise.Diferenciador.Green);
-            txtRed.Text = Convert.ToString(_analise.Diferenciador.Red);
+            if (_retangulo.Altura() != 0 && _retangulo.Largura() != 0)
+            {
+                _analise.ObterDiferenciador(_webCam.Matriz.ToImage<Bgr, byte>(), _retangulo.Retangulo);
+                txtBlue.Text = Convert.ToString(_analise.Diferenciador.Blue);
+                txtGreen.Text = Convert.ToString(_analise.Diferenciador.Green);
+                txtRed.Text = Convert.ToString(_analise.Diferenciador.Red);
+                btnIniciarCapturas.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Para iniciar a análise é preciso selecionar uma área de interesse na imagem!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
-        //Iniciar captras para a análise
+        //Iniciar capturas para a análise
         private async void BtnIniciarCapturas_Click(object sender, EventArgs e)
         {
-            await Task.Run(() => _analise.IniciarAnalise(nudTempo.Value, nudCapturas.Value, _webCam, _retangulo.Retangulo, graficoResultados));
-            _analise.Sinais.ForEach(x => rtxtSinais.AppendText(x + "\n"));
+            if (_retangulo.Altura() != 0 && _retangulo.Largura() != 0)
+            {
+                graficoResultados.Series[0].Points.Clear();
+                await Task.Run(() => _analise.IniciarAnalise(nudTempo.Value, nudCapturas.Value, _webCam, _retangulo.Retangulo, graficoResultados));
+                rtxtSinais.Clear();
+                _analise.Sinais.ForEach(x => rtxtSinais.AppendText(x + "\n"));
+            }
+            else
+            {
+                MessageBox.Show("Para iniciar a análise é preciso selecionar uma área de interesse na imagem!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         

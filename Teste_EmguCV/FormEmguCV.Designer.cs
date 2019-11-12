@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pbCapturaWebCam = new System.Windows.Forms.PictureBox();
             this.btnObterDiferenciador = new System.Windows.Forms.Button();
             this.txtBlue = new System.Windows.Forms.TextBox();
@@ -138,9 +138,19 @@
             // nudTempo
             // 
             this.nudTempo.Location = new System.Drawing.Point(327, 441);
+            this.nudTempo.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudTempo.Name = "nudTempo";
             this.nudTempo.Size = new System.Drawing.Size(67, 20);
             this.nudTempo.TabIndex = 8;
+            this.nudTempo.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label4
             // 
@@ -163,12 +173,23 @@
             // nudCapturas
             // 
             this.nudCapturas.Location = new System.Drawing.Point(327, 467);
+            this.nudCapturas.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudCapturas.Name = "nudCapturas";
             this.nudCapturas.Size = new System.Drawing.Size(67, 20);
             this.nudCapturas.TabIndex = 10;
+            this.nudCapturas.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // btnIniciarCapturas
             // 
+            this.btnIniciarCapturas.Enabled = false;
             this.btnIniciarCapturas.Location = new System.Drawing.Point(400, 441);
             this.btnIniciarCapturas.Name = "btnIniciarCapturas";
             this.btnIniciarCapturas.Size = new System.Drawing.Size(141, 47);
@@ -275,31 +296,31 @@
             // 
             // graficoResultados
             // 
-            chartArea3.AxisX.Crossing = 0D;
-            chartArea3.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea3.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea3.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.Transparent;
-            chartArea3.AxisX.Title = "Capturas";
-            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisY.Crossing = 0D;
-            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.Transparent;
-            chartArea3.AxisY.Title = "Sinal";
-            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.Name = "ChartArea1";
-            this.graficoResultados.ChartAreas.Add(chartArea3);
+            chartArea5.AxisX.Crossing = 0D;
+            chartArea5.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea5.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea5.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea5.AxisX.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea5.AxisX.Title = "Capturas";
+            chartArea5.AxisX.TitleFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.AxisY.Crossing = 0D;
+            chartArea5.AxisY.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea5.AxisY.Title = "Sinal";
+            chartArea5.AxisY.TitleFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.Name = "ChartArea1";
+            this.graficoResultados.ChartAreas.Add(chartArea5);
             this.graficoResultados.Location = new System.Drawing.Point(595, 12);
             this.graficoResultados.Name = "graficoResultados";
-            series3.BorderWidth = 3;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Color = System.Drawing.Color.Red;
-            series3.CustomProperties = "LabelStyle=TopLeft";
-            series3.IsVisibleInLegend = false;
-            series3.MarkerSize = 3;
-            series3.Name = "Series1";
-            series3.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            this.graficoResultados.Series.Add(series3);
+            series5.BorderWidth = 3;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Color = System.Drawing.Color.Red;
+            series5.CustomProperties = "LabelStyle=TopLeft";
+            series5.IsVisibleInLegend = false;
+            series5.MarkerSize = 3;
+            series5.Name = "Series1";
+            series5.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            this.graficoResultados.Series.Add(series5);
             this.graficoResultados.Size = new System.Drawing.Size(602, 415);
             this.graficoResultados.TabIndex = 25;
             this.graficoResultados.Text = "chart1";

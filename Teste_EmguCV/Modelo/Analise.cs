@@ -28,19 +28,14 @@ namespace Teste_EmguCV.Modelo
 
         public void ObterDiferenciador(Image<Bgr, byte> imagem, Rectangle retangulo)
         {
-            if(retangulo.Width != 0 && retangulo.Height != 0)
-            {
-                imagem = imagem.GetSubRect(retangulo);
-
-            }
-            Diferenciador = imagem.GetAverage();
+            Diferenciador = imagem.GetSubRect(retangulo).GetAverage();
         }
 
         public async Task IniciarAnalise(decimal tempo, decimal numCapturas, WebCam webCam, Rectangle retangulo, Chart graficoResultados)
         {
             Repetições = Convert.ToInt32(tempo * numCapturas);
             Intervalo = TimeSpan.FromMilliseconds(1000 / Convert.ToInt32(numCapturas));
-            for (int i = 0; i <= Repetições; i++)
+            for (int i = 0; i < Repetições; i++)
             {
                 Capturas.Add(webCam.Matriz.ToImage<Bgr, byte>().GetSubRect(retangulo).GetAverage());
                 CalcularSinal(i);
