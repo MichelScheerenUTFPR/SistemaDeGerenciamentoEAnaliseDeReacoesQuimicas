@@ -88,15 +88,23 @@ namespace Teste_EmguCV
             AtualizarGrafico();
         }
 
+        //private void AtualizarGrafico()
+        //{
+        //    PointPairList points = new PointPairList();
+        //    for (int i = 0; i < _analise.Sinais.Count; i++)
+        //    {
+        //        points.Add(new PointPair(i + 1, _analise.Sinais[i]));
+        //    }
+        //    graficoAnalise.GraphPane.AddCurve("Sinais/Tempo", points, Color.Red, SymbolType.None);
+        //    graficoAnalise.AxisChange();
+        //}
+
         private void AtualizarGrafico()
         {
-            PointPairList points = new PointPairList();
             for (int i = 0; i < _analise.Sinais.Count; i++)
             {
-                points.Add(new PointPair(i + 1, _analise.Sinais[i]));
+                graficoResultados.Series[0].Points.AddXY(i + 1, _analise.Sinais[i]);
             }
-            graficoAnalise.GraphPane.AddCurve("Sinais/Tempo", points, Color.Red, SymbolType.None);
-            graficoAnalise.AxisChange();
         }
     }
 }
