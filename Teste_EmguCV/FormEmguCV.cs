@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Emgu.CV.Structure;
 using Teste_EmguCV.Modelo;
-using ZedGraph;
 
 namespace Teste_EmguCV
 {
@@ -16,9 +15,6 @@ namespace Teste_EmguCV
         private WebCam _webCam;
         private DesenharRetangulo _retangulo;
         private Analise _analise;
-
-        //NOVO
-        GraphPane grafico;
 
         public FormEmguCV()
         {
@@ -32,9 +28,8 @@ namespace Teste_EmguCV
             _webCam.WebCamThread.Start();
             _retangulo = new DesenharRetangulo();
             _analise = new Analise();
-
-            //NOVO
-            grafico = graficoAnalise.GraphPane;
+            nudCapturas.Value = 1;
+            nudTempo.Value = 10;
         }
 
         //Garantir que a Thread da WebCam seja fechada
@@ -61,6 +56,7 @@ namespace Teste_EmguCV
             _retangulo.MouseUp(e.Location);
         }
 
+        //Inserir o retângulo manualmente
         private void BtnRetanguloManual_Click(object sender, EventArgs e)
         {
             try
@@ -73,6 +69,7 @@ namespace Teste_EmguCV
             }        
         }
 
+        //Iniciar captra do diferenciador
         private void BtnObterDiferenciador_Click(object sender, EventArgs e)
         {
             _analise.ObterDiferenciador(_webCam.Matriz.ToImage<Bgr, byte>(), _retangulo.Retangulo);
@@ -81,19 +78,13 @@ namespace Teste_EmguCV
             txtRed.Text = Convert.ToString(_analise.Diferenciador.Red);
         }
 
+        //Iniciar captras para a análise
         private async void BtnIniciarCapturas_Click(object sender, EventArgs e)
         {
-            await Task.Run(() => _analise.IniciarAnalise(nudTempo.Value, nudCapturas.Value, _webCam, _retangulo.Retangulo));
+            await Task.Run(() => _analise.IniciarAnalise(nudTempo.Value, nudCapturas.Value, _webCam, _retangulo.Retangulo, graficoResultados));
             _analise.Sinais.ForEach(x => rtxtSinais.AppendText(x + "\n"));
-            AtualizarGrafico();
         }
 
-        private void AtualizarGrafico()
-        {
-            for (int i = 0; i < _analise.Sinais.Count; i++)
-            {
-                graficoResultados.Series[0].Points.AddXY(i + 1, _analise.Sinais[i]);
-            }
-        }
+        
     }
 }

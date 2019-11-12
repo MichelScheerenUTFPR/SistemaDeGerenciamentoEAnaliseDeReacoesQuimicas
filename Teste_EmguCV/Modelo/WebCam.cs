@@ -36,7 +36,7 @@ namespace Teste_EmguCV.Modelo
             while (Captura.IsOpened)
             {
                 Matriz = Captura.QueryFrame();
-                CvInvoke.Resize(Matriz, Matriz, PbWebCam.Size);
+                //CvInvoke.Resize(Matriz, Matriz, PbWebCam.Size);
                 PbWebCam.Image = Matriz.Bitmap;
             }
         }

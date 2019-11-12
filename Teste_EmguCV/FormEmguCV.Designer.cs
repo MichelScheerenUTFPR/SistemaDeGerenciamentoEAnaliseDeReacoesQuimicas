@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pbCapturaWebCam = new System.Windows.Forms.PictureBox();
             this.btnObterDiferenciador = new System.Windows.Forms.Button();
             this.txtBlue = new System.Windows.Forms.TextBox();
@@ -66,6 +66,7 @@
             this.pbCapturaWebCam.Location = new System.Drawing.Point(12, 12);
             this.pbCapturaWebCam.Name = "pbCapturaWebCam";
             this.pbCapturaWebCam.Size = new System.Drawing.Size(550, 415);
+            this.pbCapturaWebCam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbCapturaWebCam.TabIndex = 0;
             this.pbCapturaWebCam.TabStop = false;
             this.pbCapturaWebCam.Paint += new System.Windows.Forms.PaintEventHandler(this.PbCapturaWebCam_Paint);
@@ -274,31 +275,31 @@
             // 
             // graficoResultados
             // 
-            chartArea1.AxisX.Crossing = 0D;
-            chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea1.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Transparent;
-            chartArea1.AxisX.Title = "Capturas";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.Crossing = 0D;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Transparent;
-            chartArea1.AxisY.Title = "Sinal";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.Name = "ChartArea1";
-            this.graficoResultados.ChartAreas.Add(chartArea1);
+            chartArea3.AxisX.Crossing = 0D;
+            chartArea3.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea3.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea3.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea3.AxisX.Title = "Capturas";
+            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisY.Crossing = 0D;
+            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea3.AxisY.Title = "Sinal";
+            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.Name = "ChartArea1";
+            this.graficoResultados.ChartAreas.Add(chartArea3);
             this.graficoResultados.Location = new System.Drawing.Point(595, 12);
             this.graficoResultados.Name = "graficoResultados";
-            series1.BorderWidth = 3;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Color = System.Drawing.Color.Red;
-            series1.CustomProperties = "LabelStyle=TopLeft";
-            series1.IsVisibleInLegend = false;
-            series1.MarkerSize = 3;
-            series1.Name = "Series1";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            this.graficoResultados.Series.Add(series1);
+            series3.BorderWidth = 3;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Red;
+            series3.CustomProperties = "LabelStyle=TopLeft";
+            series3.IsVisibleInLegend = false;
+            series3.MarkerSize = 3;
+            series3.Name = "Series1";
+            series3.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            this.graficoResultados.Series.Add(series3);
             this.graficoResultados.Size = new System.Drawing.Size(602, 415);
             this.graficoResultados.TabIndex = 25;
             this.graficoResultados.Text = "chart1";
