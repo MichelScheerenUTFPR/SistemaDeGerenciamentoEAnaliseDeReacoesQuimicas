@@ -1,13 +1,10 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,8 +24,6 @@ namespace Teste_EmguCV
         private Thread _captureThread;
         private Imagem _imagem; //Pro banco de Dados
         private Mat _mat;
-
-        //Teste desenhar retângulo
         private Retangulo _retangulo;
 
         public FormBancoDados()
@@ -73,14 +68,6 @@ namespace Teste_EmguCV
         {
             if(_retangulo.Altura() != 0 && _retangulo.Largura() != 0)
             {
-                //Image<Bgr, Byte> img2 = _mat.ToImage<Bgr, Byte>();
-                //img2.ROI = _retangulo.RetanguloDesenhado;
-                //Image<Bgr, byte> temp = img2.CopyBlank();
-                //img2.CopyTo(temp);
-                //img2.ROI = Rectangle.Empty;
-                //CvInvoke.Resize(temp, temp, pbCaptura.Size);
-                //pbCaptura.Image = temp.Bitmap;
-
                 Image<Bgr, Byte> img2 = _mat.ToImage<Bgr, Byte>();
                 img2 = img2.GetSubRect(_retangulo.RetanguloDesenhado);
                 pbCaptura.Image = img2.Bitmap;
@@ -93,12 +80,10 @@ namespace Teste_EmguCV
             {
                 Mat mat = CvInvoke.Imread(fileDialog.FileName, ImreadModes.AnyColor);
                 CvInvoke.Resize(mat, mat, pbObter.Size);
-                //Image<Gray, Byte> img2 = mat.ToImage<Gray, Byte>(); Deixar imagem cinza
                 pbObter.Image = mat.Bitmap;
-
                 Bitmap bitmap = new Bitmap(mat.Bitmap);
                 MemoryStream ms = new MemoryStream();
-                bitmap.Save(ms, ImageFormat.Bmp);
+                bitmap.Save(ms, ImageFormat.Png);
                 _imagem = new Imagem(ms.ToArray(), fileDialog.SafeFileName);
             }
         }
