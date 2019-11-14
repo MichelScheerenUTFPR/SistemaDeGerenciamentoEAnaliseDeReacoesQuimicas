@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste_EmguCV", "Teste_EmguCV\Teste_EmguCV.csproj", "{BEE8F75F-AB14-4632-9E79-7F685FD9EBE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmguCV", "EmguCV\EmguCV.csproj", "{BEE8F75F-AB14-4632-9E79-7F685FD9EBE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste_BancoDeDados", "Teste_BancoDeDados\Teste_BancoDeDados.csproj", "{4D8180EC-960D-4BD2-89B1-C1539C0F78DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancoDeDados", "BancoDeDados\BancoDeDados.csproj", "{4D8180EC-960D-4BD2-89B1-C1539C0F78DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Emgu.CV.Structure;
 using Teste_EmguCV.Modelo;
+using Teste_EmguCV.Persistencia;
 
 namespace Teste_EmguCV
 {
@@ -22,12 +23,13 @@ namespace Teste_EmguCV
         }
 
         //No carregamento da página, faz as intanciações necessárias
-        private void FormEmguCV_Load(object sender, EventArgs e)
+        private async void FormEmguCV_Load(object sender, EventArgs e)
         {
             _webCam = new WebCam(pbCapturaWebCam);
             _webCam.WebCamThread.Start();
             _retangulo = new DesenharRetangulo();
             _analise = new Analise();
+            await Task.Run(() => CreateDataBase.Verify());
         }
 
         //Garantir que a Thread da WebCam seja fechada
