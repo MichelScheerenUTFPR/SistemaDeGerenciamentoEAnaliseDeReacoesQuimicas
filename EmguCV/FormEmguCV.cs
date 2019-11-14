@@ -91,14 +91,25 @@ namespace Teste_EmguCV
         {
             if (_retangulo.Altura() != 0 && _retangulo.Largura() != 0)
             {
-                graficoResultados.Series[0].Points.Clear();
-                await Task.Run(() => _analise.IniciarAnalise(nudTempo.Value, nudCapturas.Value, _webCam, _retangulo.Retangulo, graficoResultados));
-                rtxtSinais.Clear();
-                _analise.Sinais.ForEach(x => rtxtSinais.AppendText(x + "\n"));
+                
+                await Task.Run(() => _analise.IniciarAnalise(nudTempo.Value, nudCapturas.Value, _webCam, _retangulo.Retangulo));
+                AtualizarComponentes();
+                
             }
             else
             {
                 MessageBox.Show("Para iniciar a análise é preciso selecionar uma área de interesse na imagem!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void AtualizarComponentes()
+        {
+            rtxtSinais.Clear();
+            graficoResultados.Series[0].Points.Clear();
+            for (int i = 0; i < _analise.Sinais.Count; i++)
+            {
+                rtxtSinais.AppendText(_analise.Sinais[i] + "\n");
+                graficoResultados.Series[0].Points.AddXY(i + 1, _analise.Sinais[i]);
             }
         }
 
@@ -113,6 +124,36 @@ namespace Teste_EmguCV
                 menuWebCam.Enabled = true;
             }
             
+        }
+
+        private void BtnCaminhoPlanilha_Click(object sender, EventArgs e)
+        {
+            DialogResult result = folderBrowserPlanilha.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                txtBoxCaminhoPlanilha.Text = folderBrowserPlanilha.SelectedPath;
+            }
+        }
+
+        private void BtnGerarPlanilha_Click(object sender, EventArgs e)
+        {
+            GeradorPlanilha gerador = new GeradorPlanilha();
+            string path = txtBoxCaminhoPlanilha.Text + "/" + txtBoxNomePlanilha.Text + ".xlsx";
+            var dados = new List<object[]>();
+            for(int i = 0; i < _analise.Repetições; i++)
+            {
+                dados.Add(new object[] { _analise.Capturas[i].Red, _analise.Capturas[i].Green, _analise.Capturas[i].Blue, _analise.Sinais[i] });
+            }
+
+            if(string.IsNullOrEmpty(txtBoxCaminhoPlanilha.Text) || string.IsNullOrEmpty(txtBoxNomePlanilha.Text)){
+                MessageBox.Show("Existem campos vazios. Preencha-os corretamente para gerar a planilha.");
+            } else if (!System.IO.File.Exists(path))
+            {
+                gerador.gerarPlanilha(dados, path);
+            } else if(MessageBox.Show("Um arquivo com esse nome já existe. Deseja sobrescrevê-lo?", "Aviso", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                gerador.gerarPlanilha(dados, path);
+            }
         }
     }
 }
