@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pbCapturaWebCam = new System.Windows.Forms.PictureBox();
             this.btnObterDiferenciador = new System.Windows.Forms.Button();
             this.txtBlue = new System.Windows.Forms.TextBox();
@@ -57,6 +57,13 @@
             this.graficoResultados = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pnlWebCam = new System.Windows.Forms.Panel();
             this.menuWebCam = new System.Windows.Forms.MenuStrip();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtBoxCaminhoPlanilha = new System.Windows.Forms.TextBox();
+            this.txtBoxNomePlanilha = new System.Windows.Forms.TextBox();
+            this.folderBrowserPlanilha = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnCaminhoPlanilha = new System.Windows.Forms.Button();
+            this.btnGerarPlanilha = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbCapturaWebCam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTempo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCapturas)).BeginInit();
@@ -300,31 +307,31 @@
             // 
             // graficoResultados
             // 
-            chartArea6.AxisX.Crossing = 0D;
-            chartArea6.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea6.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea6.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea6.AxisX.MajorGrid.LineColor = System.Drawing.Color.Transparent;
-            chartArea6.AxisX.Title = "Capturas";
-            chartArea6.AxisX.TitleFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea6.AxisY.Crossing = 0D;
-            chartArea6.AxisY.MajorGrid.LineColor = System.Drawing.Color.Transparent;
-            chartArea6.AxisY.Title = "Sinal";
-            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea6.Name = "ChartArea1";
-            this.graficoResultados.ChartAreas.Add(chartArea6);
+            chartArea2.AxisX.Crossing = 0D;
+            chartArea2.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea2.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea2.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea2.AxisX.Title = "Capturas";
+            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY.Crossing = 0D;
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea2.AxisY.Title = "Sinal";
+            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.Name = "ChartArea1";
+            this.graficoResultados.ChartAreas.Add(chartArea2);
             this.graficoResultados.Location = new System.Drawing.Point(595, 12);
             this.graficoResultados.Name = "graficoResultados";
-            series6.BorderWidth = 3;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Color = System.Drawing.Color.Red;
-            series6.CustomProperties = "LabelStyle=TopLeft";
-            series6.IsVisibleInLegend = false;
-            series6.MarkerSize = 3;
-            series6.Name = "Series1";
-            series6.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            this.graficoResultados.Series.Add(series6);
+            series2.BorderWidth = 3;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Red;
+            series2.CustomProperties = "LabelStyle=TopLeft";
+            series2.IsVisibleInLegend = false;
+            series2.MarkerSize = 3;
+            series2.Name = "Series1";
+            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            this.graficoResultados.Series.Add(series2);
             this.graficoResultados.Size = new System.Drawing.Size(602, 415);
             this.graficoResultados.TabIndex = 25;
             this.graficoResultados.Text = "chart1";
@@ -347,11 +354,69 @@
             this.menuWebCam.Text = "menuStrip1";
             this.menuWebCam.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuWebCam_ItemClicked);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(604, 473);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(105, 13);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Caminho do Diretório";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(607, 500);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(89, 13);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "Nome do Arquivo";
+            // 
+            // txtBoxCaminhoPlanilha
+            // 
+            this.txtBoxCaminhoPlanilha.Location = new System.Drawing.Point(716, 470);
+            this.txtBoxCaminhoPlanilha.Name = "txtBoxCaminhoPlanilha";
+            this.txtBoxCaminhoPlanilha.Size = new System.Drawing.Size(128, 20);
+            this.txtBoxCaminhoPlanilha.TabIndex = 29;
+            // 
+            // txtBoxNomePlanilha
+            // 
+            this.txtBoxNomePlanilha.Location = new System.Drawing.Point(716, 497);
+            this.txtBoxNomePlanilha.Name = "txtBoxNomePlanilha";
+            this.txtBoxNomePlanilha.Size = new System.Drawing.Size(128, 20);
+            this.txtBoxNomePlanilha.TabIndex = 30;
+            // 
+            // btnCaminhoPlanilha
+            // 
+            this.btnCaminhoPlanilha.Location = new System.Drawing.Point(850, 477);
+            this.btnCaminhoPlanilha.Name = "btnCaminhoPlanilha";
+            this.btnCaminhoPlanilha.Size = new System.Drawing.Size(120, 35);
+            this.btnCaminhoPlanilha.TabIndex = 31;
+            this.btnCaminhoPlanilha.Text = "Buscar Diretório";
+            this.btnCaminhoPlanilha.UseVisualStyleBackColor = true;
+            this.btnCaminhoPlanilha.Click += new System.EventHandler(this.BtnCaminhoPlanilha_Click);
+            // 
+            // btnGerarPlanilha
+            // 
+            this.btnGerarPlanilha.Location = new System.Drawing.Point(1013, 462);
+            this.btnGerarPlanilha.Name = "btnGerarPlanilha";
+            this.btnGerarPlanilha.Size = new System.Drawing.Size(162, 57);
+            this.btnGerarPlanilha.TabIndex = 32;
+            this.btnGerarPlanilha.Text = "Gerar Planilha";
+            this.btnGerarPlanilha.UseVisualStyleBackColor = true;
+            this.btnGerarPlanilha.Click += new System.EventHandler(this.BtnGerarPlanilha_Click);
+            // 
             // FormEmguCV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1226, 749);
+            this.Controls.Add(this.btnGerarPlanilha);
+            this.Controls.Add(this.btnCaminhoPlanilha);
+            this.Controls.Add(this.txtBoxNomePlanilha);
+            this.Controls.Add(this.txtBoxCaminhoPlanilha);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.pnlWebCam);
             this.Controls.Add(this.graficoResultados);
             this.Controls.Add(this.label10);
@@ -422,6 +487,13 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart graficoResultados;
         private System.Windows.Forms.Panel pnlWebCam;
         private System.Windows.Forms.MenuStrip menuWebCam;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtBoxCaminhoPlanilha;
+        private System.Windows.Forms.TextBox txtBoxNomePlanilha;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserPlanilha;
+        private System.Windows.Forms.Button btnCaminhoPlanilha;
+        private System.Windows.Forms.Button btnGerarPlanilha;
     }
 }
 
