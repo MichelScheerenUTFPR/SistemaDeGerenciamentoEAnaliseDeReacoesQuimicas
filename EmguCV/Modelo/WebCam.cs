@@ -22,13 +22,16 @@ namespace Teste_EmguCV.Modelo
 
         public PictureBox PbWebCam { get; set; }
 
+        public int WebCamAtual { get; set; }
+
         public WebCam(PictureBox pictureBox)
         {
-            Captura = new VideoCapture();
             Matriz = new Mat();
-            WebCamThread = new Thread(ExibirImagemWebCam);
-            WebCamThread.Priority = ThreadPriority.Highest;
+            Captura = new VideoCapture(0);
+            WebCamAtual = 0;
+            WebCamThread = new Thread(ExibirImagemWebCam){Priority = ThreadPriority.Highest};
             PbWebCam = pictureBox;
+            WebCamThread.Start();
         }
 
         private void ExibirImagemWebCam()
@@ -36,7 +39,6 @@ namespace Teste_EmguCV.Modelo
             while (Captura.IsOpened)
             {
                 Matriz = Captura.QueryFrame();
-                //CvInvoke.Resize(Matriz, Matriz, PbWebCam.Size);
                 PbWebCam.Image = Matriz.Bitmap;
             }
         }
@@ -45,6 +47,38 @@ namespace Teste_EmguCV.Modelo
         {
             WebCamThread.Abort();
             Captura.Dispose();
+        }
+
+        public void TestarOutrasCameras(MenuStrip menu)
+        {
+            menu.Items.Add("WebCam principal");
+            int camera = 1;
+            while (camera != -1)
+            {
+                VideoCapture aux = new VideoCapture(camera);
+                if (aux.IsOpened)
+                {
+                    camera++;
+                    menu.Items.Add("WebCam " + camera);
+                }
+                else
+                {
+                    camera = -1;
+                }
+                aux.Dispose();
+            }
+        }
+
+        public async Task MudarWebCam(int indice)
+        {
+            VideoCapture captureAux = Captura;
+            Thread threadAux = WebCamThread;
+            Captura = new VideoCapture(indice);
+            WebCamAtual = indice;
+            WebCamThread = new Thread(ExibirImagemWebCam) { Priority = ThreadPriority.Highest };
+            await Task.Run(() => WebCamThread.Start());
+            await Task.Run(() => threadAux.Abort());
+            captureAux.Dispose();
         }
     }
 }

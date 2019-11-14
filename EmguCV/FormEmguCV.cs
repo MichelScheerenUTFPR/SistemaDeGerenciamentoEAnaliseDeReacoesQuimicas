@@ -26,7 +26,7 @@ namespace Teste_EmguCV
         private async void FormEmguCV_Load(object sender, EventArgs e)
         {
             _webCam = new WebCam(pbCapturaWebCam);
-            _webCam.WebCamThread.Start();
+            _webCam.TestarOutrasCameras(menuWebCam);
             _retangulo = new DesenharRetangulo();
             _analise = new Analise();
             await Task.Run(() => CreateDataBase.Verify());
@@ -102,6 +102,17 @@ namespace Teste_EmguCV
             }
         }
 
-        
+        //Alternar entra WebCams
+        private async void MenuWebCam_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            int indice = menuWebCam.Items.IndexOf(e.ClickedItem);
+            if (indice != _webCam.WebCamAtual)
+            {
+                menuWebCam.Enabled = false;
+                await Task.Run(() => _webCam.MudarWebCam(indice));
+                menuWebCam.Enabled = true;
+            }
+            
+        }
     }
 }
